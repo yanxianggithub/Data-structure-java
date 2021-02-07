@@ -1,4 +1,4 @@
-package leapyears;
+package leap_years;
 
 import java.util.Scanner;
 
