@@ -1,4 +1,4 @@
-package dynamic.array;
+package dynamic_array;
 
 public class Main {
 
