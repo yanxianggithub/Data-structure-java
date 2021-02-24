@@ -18,7 +18,7 @@ public class Leapyears {
 	}
 	
 	public static void main(String[] args) {
-		// TODO 自动生成的方法存根
+		
 		Scanner in = new Scanner(System.in);
 		Leapyears y = new Leapyears();
 		System.out.println("请输入年份：");
