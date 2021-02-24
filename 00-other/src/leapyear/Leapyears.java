@@ -26,5 +26,6 @@ public class Leapyears {
 		if(y.isleapyear(i) == 1)
 			System.out.printf("%d是闰年。",i);
 		else System.out.printf("%d不是闰年。",i);
+		in.close();
 	}
 }
