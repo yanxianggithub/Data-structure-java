@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/00-other/00-other.iml" filepath="$PROJECT_DIR$/00-other/00-other.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01-dynamic_array/01-dynamic_array.iml" filepath="$PROJECT_DIR$/01-dynamic_array/01-dynamic_array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02-linked_list/02-linked_list.iml" filepath="$PROJECT_DIR$/02-linked_list/02-linked_list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Data-structure-java.iml" filepath="$PROJECT_DIR$/.idea/Data-structure-java.iml" />
+    </modules>
+  </component>
+</project>
