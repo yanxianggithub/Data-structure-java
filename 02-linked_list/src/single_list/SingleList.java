@@ -1,74 +1,35 @@
 package single_list;
 
-public class SingleList {
-	/**
-	 * 元素的数量
-	 */
-	private int size;
-	/**
-	 * 所有的元素
-	 */
-	private E[] elements;
-	
-	private static final int DEFAULT_CAPACITY= 10;
-	private static final int ELEMENT_NOT_FOUND = -1;
-	
-	/**
-	 * 构造函数
-	 */
-	public SingleList () {
-		this(DEFAULT_CAPACITY);
+public class SingleList<E> {
+	private Node<E> first;
+
+	private static class Node<E> {
+		E element;
+		Node<E> next;
+		public Node(E element,Node<E> next){
+			this.element = element;
+			this.next = next;
+		}
 	}
-	
-	public SingleList (int capaticy) {
-		capaticy = (capaticy < DEFAULT_CAPACITY) ? DEFAULT_CAPACITY : capaticy;
-		elements = (E[]) new Object[capaticy];
-	}
+
 	/**
 	 * 清除所有元素
 	 */
 	public void clear() {
-		first = null;
 		size = 0;
+		first = null;
 	}
-	/**
-	 * 元素的数量
-	 * @return
-	 */
-	public int size() {
-		return size;
-	}
-	/**
-	 * 是否为空
-	 * @return
-	 */
-	public boolean isEmpty() {
-		return size == 0;
-	}
-	/**
-	 * 是否包含某个元素
-	 * @param element
-	 * @return
-	 */
-	public boolean contains(E element) {
-		return indexOf(element) != ELEMENT_NOT_FOUND;
-	}
-	/**
-	 * 添加元素到尾部
-	 * @param element
-	 */
-	public void add(E element) {
-		add(size,element);
-	}
+
 	/**
 	 * 获取index位置的元素
 	 * @param index
 	 * @return
 	 */
 	public E get(int index) {
-		check(index);
-		return elements[index];
+
+		return node(index).element;
 	}
+
 	/**
 	 * 设置index位置的元素
 	 * @param index
@@ -76,11 +37,12 @@ public class SingleList {
 	 * @return 原来的元素ֵ
 	 */
 	public E set(int index,E element) {
-		check(index);
-		E old = elements[index];
-		elements[index] = element;
+		Node<E> node = node(index);
+		E old = node.element;
+		node.element = element;
 		return old;
 	}
+
 	/**
 	 * 在index位置插入一个元素
 	 * @param index
@@ -88,14 +50,16 @@ public class SingleList {
 	 */
 	public void add(int index,E element) {
 		checkForAdd(index);
-		ensureCapacity(size + 1);
-		
-		for (int i = size - 1; i >= index; i--) {
-			elements[i + 1] = elements[i];
+
+		if(index == 0){
+			first = new Node<>(element,first);
+		}else{
+			Node<E> prev = node(index - 1);
+			prev.next = new Node<>(element,prev.next);
 		}
-		elements[index] = element;
 		size++;
 	}
+
 	/**
 	 * 删除index位置的元素
 	 * @param index
@@ -103,14 +67,19 @@ public class SingleList {
 	 */
 	public E remove(int index) {
 		check(index);
-		E old = elements[index];
-		
-		for (int i = index + 1; i <= size - 1; i++) {
-			elements[i - 1] = elements[i];
+
+		Node<E> node = first;
+		if(index == 0){
+			first = first.next;
+		}else{
+			Node<E> prev = node(index - 1);
+			node = prev.next;
+			prev.next = node.next;
 		}
-		elements[--size] = null;
-		return old;
+		size--;
+		return node.element;
 	}
+
 	/**
 	 * 查看元素的索引
 	 * @param element
@@ -118,37 +87,36 @@ public class SingleList {
 	 */
 	public int indexOf(E element) {
 		if(element == null) {
+			Node<E> mode = first;
 			for(int i = 0; i < size; i++) {
-				if(elements[i] == null) return i;
+				if(node.element == null) return i;
+				node = node.next;
 			}
 		}else {
+			Node<E> mode = first;
 			for(int i = 0; i < size; i++) {
-				if(element.equals(elements[i])) return i;
+				if(element.equals(node.element)) return i;
+				node = node.next;
 			}
 		}
 		return ELEMENT_NOT_FOUND;
 	}
+
 	/**
-	 * 保证要有capacity的容量
-	 * @param capacity
+	 * 获取index位置对应的节点对象
+	 * @param index
+	 * @return
 	 */
-	private void ensureCapacity(int capacity) {
-		int oldCapacity = elements.length;
-		if(oldCapacity >= capacity)return;
-		// 新容量为旧容量的1.5倍
-		int newCapacity = oldCapacity + (oldCapacity >> 1);
-		E[] newElements = (E[]) new Object[newCapacity];
-		
-		for (int i = 0; i < size; i++) {
-			newElements[i] = elements[i];
+	private Node<E> node(int index){
+		check(index);
+
+		Node<E> node = first;
+		for (int i = 0; i < index; i++) {
+			node = node.next;
 		}
-		elements = newElements;
+		retrun node;
 	}
-	
-	private void outOfBounds(int index) {
-		throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
-	}
-	
+
 	private void check(int index) {
 		if(index < 0 || index >= size) {
 			outOfBounds(index);
@@ -160,5 +128,30 @@ public class SingleList {
 			outOfBounds(index);
 		}
 	}
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("size=").append(size).append(", [");
+		Node<E> node = first;
+		for (int i = 0; i < size; i++) {
+			if (i != 0) {
+				string.append(", ");
+			}
+
+			string.append(node.element);
+
+			node = node.next;
+		}
+		string.append("]");
+
+//		Node<E> node1 = first;
+//		while (node1 != null) {
+//
+//
+//			node1 = node1.next;
+//		}
+		return string.toString();
+	}
 
 }
+
