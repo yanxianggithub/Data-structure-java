@@ -5,14 +5,14 @@ public class DynamicArray<E> {
 	 * 元素的数量
 	 */
 	private int size;
-	/*
+	/**
 	 * 所有的元素
 	 */
 	private E[] elements;
 	private static final int DEFAULT_CAPACITY= 10;
 	private static final int ELEMENT_NOT_FOUND = -1;
 	
-	/*
+	/**
 	 * 构造函数
 	 */
 	public DynamicArray() {
@@ -23,7 +23,7 @@ public class DynamicArray<E> {
 		capaticy = (capaticy < DEFAULT_CAPACITY) ? DEFAULT_CAPACITY : capaticy;
 		elements = (E[]) new Object[capaticy];
 	}
-	/*
+	/**
 	 * 清除所有元素
 	 */
 	public void clear() {
@@ -161,7 +161,7 @@ public class DynamicArray<E> {
 			outOfBounds(index);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
