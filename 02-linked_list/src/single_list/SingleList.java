@@ -99,7 +99,7 @@ public class SingleList<E> {
 				node = node.next;
 			}
 		}
-		return ELEMENT_NOT_FOUND;
+		return -1;
 	}
 
 	/**
