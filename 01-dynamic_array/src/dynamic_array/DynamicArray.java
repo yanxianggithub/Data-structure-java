@@ -1,19 +1,19 @@
 package dynamic_array;
 
 public class DynamicArray<E> {
-	/**
-	 * 元素的数量
+	/*
+	 元素的数量
 	 */
 	private int size;
-	/**
-	 * 所有的元素
+	/*
+	 所有的元素
 	 */
 	private E[] elements;
 	private static final int DEFAULT_CAPACITY= 10;
 	private static final int ELEMENT_NOT_FOUND = -1;
 	
-	/**
-	 * 构造函数
+	/*
+	 构造函数
 	 */
 	public DynamicArray() {
 		this(DEFAULT_CAPACITY);
@@ -23,8 +23,8 @@ public class DynamicArray<E> {
 		capaticy = (capaticy < DEFAULT_CAPACITY) ? DEFAULT_CAPACITY : capaticy;
 		elements = (E[]) new Object[capaticy];
 	}
-	/**
-	 * 清除所有元素
+	/*
+	 清除所有元素
 	 */
 	public void clear() {
 		for (int i = 0; i < size; i++) {
@@ -32,49 +32,49 @@ public class DynamicArray<E> {
 		}
 		size = 0;
 	}
-	/**
-	 * 元素的数量
-	 * @return
+	/*
+	 元素的数量
+	 @return
 	 */
 	public int size() {
 		return size;
 	}
-	/**
-	 * 是否为空
-	 * @return
+	/*
+	 是否为空
+	 @return
 	 */
 	public boolean isEmpty() {
 		return size == 0;
 	}
-	/**
-	 * 是否包含某个元素
-	 * @param element
-	 * @return
+	/*
+	 是否包含某个元素
+	 @param element
+	 @return
 	 */
 	public boolean contains(E element) {
 		return indexOf(element) != ELEMENT_NOT_FOUND;
 	}
-	/**
-	 * 添加元素到尾部
-	 * @param element
+	/*
+	 添加元素到尾部
+	 @param element
 	 */
 	public void add(E element) {
 		add(size,element);
 	}
-	/**
-	 * 获取index位置的元素
-	 * @param index
-	 * @return
+	/*
+	 获取index位置的元素
+	 @param index
+	 @return
 	 */
 	public E get(int index) {
 		check(index);
 		return elements[index];
 	}
-	/**
-	 * 设置index位置的元素
-	 * @param index
-	 * @param element
-	 * @return 原来的元素ֵ
+	/*
+	 设置index位置的元素
+	 @param index
+	 @param element
+	 @return 原来的元素ֵ
 	 */
 	public E set(int index,E element) {
 		check(index);
@@ -82,10 +82,10 @@ public class DynamicArray<E> {
 		elements[index] = element;
 		return old;
 	}
-	/**
-	 * 在index位置插入一个元素
-	 * @param index
-	 * @param element
+	/*
+	 在index位置插入一个元素
+	 @param index
+	 @param element
 	 */
 	public void add(int index,E element) {
 		checkForAdd(index);
@@ -97,10 +97,10 @@ public class DynamicArray<E> {
 		elements[index] = element;
 		size++;
 	}
-	/**
-	 * 删除index位置的元素
-	 * @param index
-	 * @return
+	/*
+	 删除index位置的元素
+	 @param index
+	 @return
 	 */
 	public E remove(int index) {
 		check(index);
@@ -112,10 +112,10 @@ public class DynamicArray<E> {
 		elements[--size] = null;
 		return old;
 	}
-	/**
-	 * 查看元素的索引
-	 * @param element
-	 * @return
+	/*
+	 查看元素的索引
+	 @param element
+	 @return
 	 */
 	public int indexOf(E element) {
 		if(element == null) {
@@ -129,9 +129,9 @@ public class DynamicArray<E> {
 		}
 		return ELEMENT_NOT_FOUND;
 	}
-	/**
-	 * 保证要有capacity的容量
-	 * @param capacity
+	/*
+	 保证要有capacity的容量
+	 @param capacity
 	 */
 	private void ensureCapacity(int capacity) {
 		int oldCapacity = elements.length;
