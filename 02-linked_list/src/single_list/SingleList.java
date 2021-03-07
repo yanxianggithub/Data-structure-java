@@ -32,7 +32,7 @@ public class SingleList {
 		size = 0;
 		first = null;
 	}
-<<<<<<< HEAD
+
 	/*
 	 元素的数量
 	 @return
@@ -66,24 +66,16 @@ public class SingleList {
 	 获取index位置的元素
 	 @param index
 	 @return
-=======
-
-	/**
-	 * 获取index位置的元素
-	 * @param index
-	 * @return
->>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
+	 获取index位置的元素
+	 @param index
+	 @return
 	 */
 	public E get(int index) {
 
 		return node(index).element;
 	}
-<<<<<<< HEAD
-	/*
-=======
 
-	/**
->>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
+	/*
 	 * 设置index位置的元素
 	 * @param index
 	 * @param element
@@ -95,12 +87,8 @@ public class SingleList {
 		node.element = element;
 		return old;
 	}
-<<<<<<< HEAD
-	/*
-=======
 
-	/**
->>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
+	/*
 	 * 在index位置插入一个元素
 	 * @param index
 	 * @param element
