@@ -1,6 +1,5 @@
 package single_list;
 
-<<<<<<< HEAD
 public class SingleList {
 	/*
 	 元素的数量
@@ -24,22 +23,10 @@ public class SingleList {
 	}
 	/*
 	 清除所有元素
-=======
-public class SingleList<E> {
-	private Node<E> first;
-
-	private static class Node<E> {
-		E element;
-		Node<E> next;
-		public Node(E element,Node<E> next){
-			this.element = element;
-			this.next = next;
-		}
-	}
+	 */
 
 	/**
 	 * 清除所有元素
->>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
 	 */
 	public void clear() {
 		size = 0;
@@ -129,16 +116,7 @@ public class SingleList<E> {
 		}
 		size++;
 	}
-<<<<<<< HEAD
-	/*
-=======
 
-	/**
->>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
-	 * 删除index位置的元素
-	 * @param index
-	 * @return
-	 */
 	public E remove(int index) {
 		check(index);
 
@@ -153,12 +131,8 @@ public class SingleList<E> {
 		size--;
 		return node.element;
 	}
-<<<<<<< HEAD
-	/*
-=======
 
-	/**
->>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
+	/*
 	 * 查看元素的索引
 	 * @param element
 	 * @return
@@ -179,18 +153,7 @@ public class SingleList<E> {
 		}
 		return -1;
 	}
-<<<<<<< HEAD
-	/*
-	 * 保证要有capacity的容量
-	 * @param capacity
-=======
 
-	/**
-	 * 获取index位置对应的节点对象
-	 * @param index
-	 * @return
->>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
-	 */
 	private Node<E> node(int index){
 		check(index);
 
@@ -228,12 +191,7 @@ public class SingleList<E> {
 		}
 		string.append("]");
 
-//		Node<E> node1 = first;
-//		while (node1 != null) {
-//
-//
-//			node1 = node1.next;
-//		}
+
 		return string.toString();
 	}
 
