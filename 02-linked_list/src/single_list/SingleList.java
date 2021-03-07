@@ -1,5 +1,6 @@
 package single_list;
 
+<<<<<<< HEAD
 public class SingleList {
 	/*
 	 元素的数量
@@ -23,11 +24,28 @@ public class SingleList {
 	}
 	/*
 	 清除所有元素
+=======
+public class SingleList<E> {
+	private Node<E> first;
+
+	private static class Node<E> {
+		E element;
+		Node<E> next;
+		public Node(E element,Node<E> next){
+			this.element = element;
+			this.next = next;
+		}
+	}
+
+	/**
+	 * 清除所有元素
+>>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
 	 */
 	public void clear() {
-		first = null;
 		size = 0;
+		first = null;
 	}
+<<<<<<< HEAD
 	/*
 	 元素的数量
 	 @return
@@ -61,91 +79,128 @@ public class SingleList {
 	 获取index位置的元素
 	 @param index
 	 @return
+=======
+
+	/**
+	 * 获取index位置的元素
+	 * @param index
+	 * @return
+>>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
 	 */
 	public E get(int index) {
-		check(index);
-		return elements[index];
+
+		return node(index).element;
 	}
+<<<<<<< HEAD
 	/*
+=======
+
+	/**
+>>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
 	 * 设置index位置的元素
 	 * @param index
 	 * @param element
 	 * @return 原来的元素ֵ
 	 */
 	public E set(int index,E element) {
-		check(index);
-		E old = elements[index];
-		elements[index] = element;
+		Node<E> node = node(index);
+		E old = node.element;
+		node.element = element;
 		return old;
 	}
+<<<<<<< HEAD
 	/*
+=======
+
+	/**
+>>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
 	 * 在index位置插入一个元素
 	 * @param index
 	 * @param element
 	 */
 	public void add(int index,E element) {
 		checkForAdd(index);
-		ensureCapacity(size + 1);
-		
-		for (int i = size - 1; i >= index; i--) {
-			elements[i + 1] = elements[i];
+
+		if(index == 0){
+			first = new Node<>(element,first);
+		}else{
+			Node<E> prev = node(index - 1);
+			prev.next = new Node<>(element,prev.next);
 		}
-		elements[index] = element;
 		size++;
 	}
+<<<<<<< HEAD
 	/*
+=======
+
+	/**
+>>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
 	 * 删除index位置的元素
 	 * @param index
 	 * @return
 	 */
 	public E remove(int index) {
 		check(index);
-		E old = elements[index];
-		
-		for (int i = index + 1; i <= size - 1; i++) {
-			elements[i - 1] = elements[i];
+
+		Node<E> node = first;
+		if(index == 0){
+			first = first.next;
+		}else{
+			Node<E> prev = node(index - 1);
+			node = prev.next;
+			prev.next = node.next;
 		}
-		elements[--size] = null;
-		return old;
+		size--;
+		return node.element;
 	}
+<<<<<<< HEAD
 	/*
+=======
+
+	/**
+>>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
 	 * 查看元素的索引
 	 * @param element
 	 * @return
 	 */
 	public int indexOf(E element) {
 		if(element == null) {
+			Node<E> node = first;
 			for(int i = 0; i < size; i++) {
-				if(elements[i] == null) return i;
+				if(node.element == null) return i;
+				node = node.next;
 			}
 		}else {
+			Node<E> node = first;
 			for(int i = 0; i < size; i++) {
-				if(element.equals(elements[i])) return i;
+				if(element.equals(node.element)) return i;
+				node = node.next;
 			}
 		}
-		return ELEMENT_NOT_FOUND;
+		return -1;
 	}
+<<<<<<< HEAD
 	/*
 	 * 保证要有capacity的容量
 	 * @param capacity
+=======
+
+	/**
+	 * 获取index位置对应的节点对象
+	 * @param index
+	 * @return
+>>>>>>> 3627877378af8c064d85645ae607c4cb1c136b82
 	 */
-	private void ensureCapacity(int capacity) {
-		int oldCapacity = elements.length;
-		if(oldCapacity >= capacity)return;
-		// 新容量为旧容量的1.5倍
-		int newCapacity = oldCapacity + (oldCapacity >> 1);
-		E[] newElements = (E[]) new Object[newCapacity];
-		
-		for (int i = 0; i < size; i++) {
-			newElements[i] = elements[i];
+	private Node<E> node(int index){
+		check(index);
+
+		Node<E> node = first;
+		for (int i = 0; i < index; i++) {
+			node = node.next;
 		}
-		elements = newElements;
+		retrun node;
 	}
-	
-	private void outOfBounds(int index) {
-		throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
-	}
-	
+
 	private void check(int index) {
 		if(index < 0 || index >= size) {
 			outOfBounds(index);
@@ -157,5 +212,30 @@ public class SingleList {
 			outOfBounds(index);
 		}
 	}
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("size=").append(size).append(", [");
+		Node<E> node = first;
+		for (int i = 0; i < size; i++) {
+			if (i != 0) {
+				string.append(", ");
+			}
+
+			string.append(node.element);
+
+			node = node.next;
+		}
+		string.append("]");
+
+//		Node<E> node1 = first;
+//		while (node1 != null) {
+//
+//
+//			node1 = node1.next;
+//		}
+		return string.toString();
+	}
 
 }
+
