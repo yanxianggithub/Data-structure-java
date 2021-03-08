@@ -1,4 +1,6 @@
-public interface LinkList<E> {
+package list;
+
+public interface List<E> {
     static final int ELEMENT_NOT_FOUND = -1;
     /*
     清除所有元素

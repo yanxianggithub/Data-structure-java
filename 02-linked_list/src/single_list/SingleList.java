@@ -1,117 +1,79 @@
 package single_list;
 
-public class SingleList {
-	/*
-	 元素的数量
-	 */
-	private int size;
-	/*
-	 所有的元素
-	 */
-	private E[] elements;
+import list.AbstractList;
 
-	/*
-	 构造函数
-	 */
-	public SingleList () {
-		this(DEFAULT_CAPACITY);
-	}
-	
-	public SingleList (int capaticy) {
-		capaticy = (capaticy < DEFAULT_CAPACITY) ? DEFAULT_CAPACITY : capaticy;
-		elements = (E[]) new Object[capaticy];
-	}
-	/*
-	 清除所有元素
-	 */
+public class SingleList<E> extends AbstractList<E> {
+	private Node<E> first;
 
-	/**
-	 * 清除所有元素
-	 */
+	private static class Node<E> {
+		E element;
+		Node<E> next;
+		public Node(E element, Node<E> next) {
+			this.element = element;
+			this.next = next;
+		}
+	}
+
+	@Override
 	public void clear() {
 		size = 0;
 		first = null;
 	}
 
-	/*
-	 元素的数量
-	 @return
-	 */
-	public int size() {
-		return size;
-	}
-	/*
-	 是否为空
-	 @return
-	 */
-	public boolean isEmpty() {
-		return size == 0;
-	}
-	/*
-	 是否包含某个元素
-	 @param element
-	 @return
-	 */
-	public boolean contains(E element) {
-		return indexOf(element) != ELEMENT_NOT_FOUND;
-	}
-	/*
-	 添加元素到尾部
-	 @param element
-	 */
-	public void add(E element) {
-		add(size,element);
-	}
-	/*
-	 获取index位置的元素
-	 @param index
-	 @return
-	 获取index位置的元素
-	 @param index
-	 @return
-	 */
+	@Override
 	public E get(int index) {
-
+		/*
+		 * 最好：O(1)
+		 * 最坏：O(n)
+		 * 平均：O(n)
+		 */
 		return node(index).element;
 	}
 
-	/*
-	 * 设置index位置的元素
-	 * @param index
-	 * @param element
-	 * @return 原来的元素ֵ
-	 */
-	public E set(int index,E element) {
+	@Override
+	public E set(int index, E element) {
+		/*
+		 * 最好：O(1)
+		 * 最坏：O(n)
+		 * 平均：O(n)
+		 */
 		Node<E> node = node(index);
 		E old = node.element;
 		node.element = element;
 		return old;
 	}
 
-	/*
-	 * 在index位置插入一个元素
-	 * @param index
-	 * @param element
-	 */
-	public void add(int index,E element) {
-		checkForAdd(index);
+	@Override
+	public void add(int index, E element) {
+		/*
+		 * 最好：O(1)
+		 * 最坏：O(n)
+		 * 平均：O(n)
+		 */
+		rangeCheckForAdd(index);
 
-		if(index == 0){
-			first = new Node<>(element,first);
-		}else{
+		if (index == 0) {
+			first = new Node<>(element, first);
+		} else {
 			Node<E> prev = node(index - 1);
-			prev.next = new Node<>(element,prev.next);
+			prev.next = new Node<>(element, prev.next);
 		}
 		size++;
 	}
 
+	@Override
 	public E remove(int index) {
-		check(index);
+		/*
+		 * 最好：O(1)
+		 * 最坏：O(n)
+		 * 平均：O(n)
+		 */
+		rangeCheck(index);
 
 		Node<E> node = first;
-		if(index == 0){
+		if (index == 0) {
 			first = first.next;
-		}else{
+		} else {
 			Node<E> prev = node(index - 1);
 			node = prev.next;
 			prev.next = node.next;
@@ -120,49 +82,41 @@ public class SingleList {
 		return node.element;
 	}
 
-	/*
-	 * 查看元素的索引
-	 * @param element
-	 * @return
-	 */
+	@Override
 	public int indexOf(E element) {
-		if(element == null) {
+		if (element == null) {
 			Node<E> node = first;
-			for(int i = 0; i < size; i++) {
-				if(node.element == null) return i;
+			for (int i = 0; i < size; i++) {
+				if (node.element == null) return i;
+
 				node = node.next;
 			}
-		}else {
+		} else {
 			Node<E> node = first;
-			for(int i = 0; i < size; i++) {
-				if(element.equals(node.element)) return i;
+			for (int i = 0; i < size; i++) {
+				if (element.equals(node.element)) return i;
+
 				node = node.next;
 			}
 		}
-		return -1;
+		return ELEMENT_NOT_FOUND;
 	}
 
-	private Node<E> node(int index){
-		check(index);
+	/*
+	 * 获取index位置对应的节点对象
+	 * @param index
+	 * @return
+	 */
+	private Node<E> node(int index) {
+		rangeCheck(index);
 
 		Node<E> node = first;
 		for (int i = 0; i < index; i++) {
 			node = node.next;
 		}
-		retrun node;
+		return node;
 	}
 
-	private void check(int index) {
-		if(index < 0 || index >= size) {
-			outOfBounds(index);
-		}
-	}
-	
-	private void checkForAdd(int index) {
-		if(index < 0 || index > size) {
-			outOfBounds(index);
-		}
-	}
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
@@ -179,9 +133,12 @@ public class SingleList {
 		}
 		string.append("]");
 
-
+//		Node<E> node1 = first;
+//		while (node1 != null) {
+//
+//
+//			node1 = node1.next;
+//		}
 		return string.toString();
 	}
-
 }
-
