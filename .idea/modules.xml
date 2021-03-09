@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/00-other/00-other.iml" filepath="$PROJECT_DIR$/00-other/00-other.iml" />
       <module fileurl="file://$PROJECT_DIR$/01-dynamic_array/01-dynamic_array.iml" filepath="$PROJECT_DIR$/01-dynamic_array/01-dynamic_array.iml" />
       <module fileurl="file://$PROJECT_DIR$/02-linked_list/02-linked_list.iml" filepath="$PROJECT_DIR$/02-linked_list/02-linked_list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03-stack/03-stack.iml" filepath="$PROJECT_DIR$/03-stack/03-stack.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Data-structure-java.iml" filepath="$PROJECT_DIR$/.idea/Data-structure-java.iml" />
     </modules>
   </component>
