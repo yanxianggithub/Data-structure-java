@@ -8,6 +8,12 @@
       <module fileurl="file://$PROJECT_DIR$/03-stack/03-stack.iml" filepath="$PROJECT_DIR$/03-stack/03-stack.iml" />
       <module fileurl="file://$PROJECT_DIR$/04-queue/04-queue.iml" filepath="$PROJECT_DIR$/04-queue/04-queue.iml" />
       <module fileurl="file://$PROJECT_DIR$/05-binary_tree/05-binary_tree.iml" filepath="$PROJECT_DIR$/05-binary_tree/05-binary_tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-AVL_tree/06-AVL_tree.iml" filepath="$PROJECT_DIR$/06-AVL_tree/06-AVL_tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07-red_black_tree/07-red_black_tree.iml" filepath="$PROJECT_DIR$/07-red_black_tree/07-red_black_tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08-set/08-set.iml" filepath="$PROJECT_DIR$/08-set/08-set.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09-map/09-map.iml" filepath="$PROJECT_DIR$/09-map/09-map.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10-hash_table/10-hash_table.iml" filepath="$PROJECT_DIR$/10-hash_table/10-hash_table.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11-heap/11-heap.iml" filepath="$PROJECT_DIR$/11-heap/11-heap.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Data-structure-java.iml" filepath="$PROJECT_DIR$/.idea/Data-structure-java.iml" />
     </modules>
   </component>
