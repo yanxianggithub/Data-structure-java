@@ -1,2 +1,2 @@
 # Data-structure-java
-study with java
+Using lava to Learn Data Structures
